@@ -8,6 +8,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "~1.17.1",
+    "compromise": "^10.6.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "dotenv": "^4.0.0",

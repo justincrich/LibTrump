@@ -5,25 +5,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-require('dotenv').config();
+
 var index = require('./routes/index');
+var api = require('./routes/api')
 var users = require('./routes/users');
 var app = express();
 var jsonParser = require("body-parser").json;
-var Twitter = require('twitter-node-client').Twitter;
 
-//enviornment variables
-var config = {
-    "consumerKey": process.env.TW_KEY,
-    "consumerSecret": process.env.TW_SECRET,
-    "accessToken": process.env.TW_TOKEN,
-    "accessTokenSecret": process.env.TW_TOKENSECRET,
-    "callBackUrl": process.env.TW_CALLBACKURL
-};
-var twitter = new Twitter(config);
-var error = function (err, response, body) {
-    	console.log('ERROR [%s]', err);
-	};
+
+//tweets.load(['a','b']);
+
 app.use(jsonParser());
 	var success = function (data) {
     	var resp = JSON.parse(data);
@@ -31,7 +22,6 @@ app.use(jsonParser());
 
 	};
 
-var resp = twitter.getUserTimeline({ screen_name: 'realDonaldTrump', count: '10'}, error, success);
 
 
 // view engine setup
@@ -52,6 +42,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/api',api);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
