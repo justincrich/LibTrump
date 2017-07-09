@@ -1,5 +1,24 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}
+  form(class='questionContainer')
+    div(class='input-field people')
+      input(type='text' required id='people' class='qField people') 
+      label(for='people' class='qLabel') Person
+      div(class='helper') Ex: David Hasselhoff
+    div(class='input-field place')
+      input(type='text' required id='place' class='qField place') 
+      label(for='place' class='qLabel') Place
+      div(class='helper') Ex: Disney Land
+    //- div(class='input-field hashtag')
+    //-   input(type='text' required id='hashtag' class='qField hashtag') 
+    //-   label(for='hashtag' class='qLabel') Hashtag
+    //-   div(class='helper') Ex: #Freedom
+    div(class='input-field org')
+      input(type='text' required id='org' class='qField org') 
+      label(for='org' class='qLabel') Organization
+      div(class='helper') Ex: The Boy Scouts
+    div(class='input-field acronym')
+      input(type='text' required id='acronym' class='qField acronym') 
+      label(for='acronym' class='qLabel') Acronym
+      div(class='helper') Ex: FBI
+    

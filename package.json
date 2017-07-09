@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node --inspect ./bin/www"
+    "start": "node --inspect ./bin/www",
+    "scss": "sass --watch ./scss:./public/stylesheets"
   },
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "~1.17.1",
+    "compromise": "^10.6.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "dotenv": "^4.0.0",
