@@ -34,5 +34,13 @@
     color:$text-color-default;
 
   }
-
+  .buttonBox{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    .submitButton{
+      font-weight: normal;
+      background:$filed-color-active;
+    }
+  }
 }

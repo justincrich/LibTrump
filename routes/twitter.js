@@ -19,7 +19,31 @@ var twitter = new Twitter(config);
 var tweets = tweetHandler();
 
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.render('index',{page:'index'});
+});
+
+// router.get('/fauxtweet',(req,res,next)=>{
+//   res.render('fauxtweet',{page:'fauxtweet'});
+// });
+router.post('/fauxtweet',(req,res,next)=>{
+  console.log('PARAMS',req.body);
+  res.render('fauxtweet',{page:'fauxtweet',inputs:req.body});
+
+});
+
+router.get('/onetweet', function(req, res, next) {
+    twitter.getUserTimeline(
+      { screen_name: 'realDonaldTrump', count: '1'},
+      (err,res,body)=>{
+        throw(err);
+      },(body)=>{
+        tweets.load(JSON.parse(body)).then(()=>{
+          let dat = tweets.print();
+          console.log(dat);
+        });
+      });
+
+      next();
 });
 
 router.get('/tweet', function(req, res, next) {

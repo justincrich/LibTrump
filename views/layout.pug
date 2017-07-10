@@ -8,10 +8,13 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1.0")/
   body
     header(class='header')
-      h3 TrumpLibs
+      h3 TrumpLibs 
       div See if you can tweet crazier than the president.
     img(src='/media/trumptweet.jpg' class='backgroundImg')
     block content
     script(type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js")
     script(type="text/javascript" src="/js/materialize.min.js")
-    script(src='/js/app.js')
+    if (page === 'index')
+      script(src='/js/index.js')
+    else if (page === 'fauxtweet')
+      script(src='/js/fauxtweet.js')

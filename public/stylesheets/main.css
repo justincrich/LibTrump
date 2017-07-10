@@ -45,6 +45,13 @@ body {
   .questionContainer .qLabel {
     font-size: 2rem;
     color: #fff; }
+  .questionContainer .buttonBox {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row; }
+    .questionContainer .buttonBox .submitButton {
+      font-weight: normal;
+      background: #5384a7; }
 
 /* ------------------FONTS------------------- */
 .header {
