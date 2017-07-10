@@ -44,6 +44,7 @@ function pos(obj){
   var a = new Promise((resolve,reject)=>{
     try{
       var res = {
+
         // nouns: nlp(obj).nouns().data(),
         // verbs: nlp(obj).verbs().data(),
         // adverbs: nlp(obj).adverbs().data(),
@@ -53,6 +54,7 @@ function pos(obj){
         hashtags:nlp(obj).hashTags().data(),
         organizations:nlp(obj).organizations().data(),
         acronyms:nlp(obj).acronyms().data()
+
 
       };
 

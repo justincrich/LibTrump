@@ -13,12 +13,14 @@ var config = {
     "callBackUrl": process.env.TW_CALLBACKURL
 };
 //Setup twitter object
+
 var twitter = new Twitter(config);
 
 //Tweet Data
 var tweets = tweetHandler();
 
 router.get('/', function(req, res, next) {
+
   res.render('index',{page:'index'});
 });
 
@@ -88,6 +90,7 @@ router.get('/tweet', function(req, res, next) {
 // router.get('/tweet/:id', function(req, res, next) {
 //
 // }
+
 
 
 

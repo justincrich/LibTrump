@@ -5,6 +5,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
 require('dotenv').config();
 // var index = require('./routes/index');
 var twitter = require('./routes/twitter');
@@ -34,6 +35,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', twitter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
