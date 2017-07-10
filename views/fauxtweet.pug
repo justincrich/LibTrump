@@ -1,6 +1,33 @@
 extends layout
 block content
-  p Tweet
-  inputs
+  div(class='tweetContainer')
+    div(class='tweetBody')
+      div(class='profileOverview')
+        img(class='img' src='/media/profileImg.jpg')
+        a(href='https://twitter.com/realDonaldTrump' target="_blank")
+          div(class='accountInfo')
+            div(class='nameContainer')
+              strong(class='name') Donald J. Trump
+              span(class='badges')
+            span(class='handle') @fakeDonaldTrump
+      div(class='tweetTextContainer')
+        p(class='text') If Chelsea Clinton were asked to hold the seat for her mother,as her mother gave our country away, the Fake News would say CHELSEA FOR PRES!
+      div(class='details')
+        div(class='dateTime') 7:47 AM - 10 Jul 2017
+  div(class="fixed-action-btn horizontal click-to-toggle")
+    a(class="btn-floating btn-large red")
+      i(class="material-icons") menu
+    ul
+      li
+        a(class="btn-floating red")
+        a(class="btn-floating yellow darken-1")
+        a(class="btn-floating green")
+        a(class="btn-floating blue")
+      
+
+              
+        
+          
+    
 
     
