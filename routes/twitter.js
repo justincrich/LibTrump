@@ -42,20 +42,11 @@ router.post('/fauxtweet/', function(req, res, next) {
     });
   }else{
     tweets.load('realDonaldTrump',1).then((output)=>{
-      //let text = tweets.print()
       res.render('fauxtweet',{page:'fauxtweet',swapsies:{
         tweetText: output[0].text,
         params: req.body,
         pos: output[0].pos
       },oldTweet:output[0].text});
-      // swapsies(output[0].text,req.body,output[0].pos).then((changedText)=>{
-      //   //res.send({data:});
-      //   console.log('new',changedText,'old',output[0].text);
-      //
-      // });
-      //res.render('index',{data:req.body});
-      //handle response
-      //res.send(tweets.print());
     });
   }
 });
