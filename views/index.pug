@@ -5,21 +5,17 @@ block content
       input(type='text' required name='people' class='qField people') 
       label(for='people' class='qLabel') Person
       div(class='helper') Ex: David Hasselhoff
-    div(class='input-field place')
-      input(type='text' required name='place' class='qField place') 
-      label(for='place' class='qLabel') Place
+    div(class='input-field places')
+      input(type='text' required name='places' class='qField place') 
+      label(for='places' class='qLabel') Place
       div(class='helper') Ex: Disney Land
-    //- div(class='input-field hashtag')
-    //-   input(type='text' required name='hashtag' class='qField hashtag') 
-    //-   label(for='hashtag' class='qLabel') Hashtag
-    //-   div(class='helper') Ex: #Freedom
-    div(class='input-field org')
-      input(type='text' required name='org' class='qField org') 
-      label(for='org' class='qLabel') Organization
+    div(class='input-field organizations')
+      input(type='text' required name='organizations' class='qField org') 
+      label(for='organizations' class='qLabel') Organization
       div(class='helper') Ex: The Boy Scouts
-    div(class='input-field acronym')
-      input(type='text' required name='acronym' class='qField acronym') 
-      label(for='acronym' class='qLabel') Acronym
+    div(class='input-field acronyms')
+      input(type='text' required name='acronyms' class='qField acronym') 
+      label(for='acronyms' class='qLabel') Acronym
       div(class='helper') Ex: FBI
     div(class='buttonBox')
-      input(class='waves-effect waves-light btn-large submitButton' type='submit' value='Submit')
+      button(class='btn waves-effect waves-light submitButton' type="submit" name="action" value='Submit') Submit

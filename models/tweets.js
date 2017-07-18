@@ -1,25 +1,47 @@
 //Parts of speach library
-var nlp = require('compromise');
+var Twitter = require('twitter-node-client').Twitter;
+require('dotenv').config();
+var config = {
+    "consumerKey": process.env.TW_KEY,
+    "consumerSecret": process.env.TW_SECRET,
+    "accessToken": process.env.TW_TOKEN,
+    "accessTokenSecret": process.env.TW_TOKENSECRET,
+    "callBackUrl": process.env.TW_CALLBACKURL
+};
+//Setup twitter object
+var twitter = new Twitter(config);
+var partsOfSpeech = require('./nlp.js').partsOfSpeech;
 
 
-var tweets = function (){
+var tweetProcessor = function (){
   let tweets = [];
   return {
-      load: (arr)=>{
+      load: (handle,num)=>{
           return new Promise((resolve,reject)=>{
+            let keeper = [];
             try{
-              arr.forEach((item,index,array)=>{
-                //get all parts of speach for Tweet
-                pos(item.text).then(obj=>{
-                  item.pos = obj;
-                  if(index === array.length-1){
-                    //save results
-                    tweets = array;
-                    //return promise
-                    resolve();
-                  }
-                }).catch(e=>{throw e});
-              });
+              twitterRequest(handle,num).then(arr=>{
+                for(let i = 0;i<arr.length; i++){
+                  partsOfSpeech(arr[i].text).then(obj=>{
+                    let length = Object.keys(obj).length;
+
+                    if(length>=1){
+                      arr[i].pos = obj;
+                      keeper.push(arr[i]);
+                    }
+                    if(i===(arr.length-1)){
+                      tweets = keeper;
+                      return keeper.length;
+                    }
+                  });
+                }
+              }).then((length)=>{
+                if(keeper.length>=1){
+                  resolve(tweets.slice());
+                }else{
+                  fetchTweets().load(handle,num+1);
+                }
+              }).catch(e=>{throw e});
             }catch (e){
               reject(e);
             }
@@ -32,38 +54,30 @@ var tweets = function (){
   };
 }
 
-function cleanText(str){
-  //remove hashtags
-  str = str.replace(/\#\w\w+\s?/g, '');
-  //remove links
-  str = str.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
-  return str;
+// function cleanText(str){
+//   //remove hashtags
+//   str = str.replace(/\#\w\w+\s?/g, '');
+//   //remove links
+//   str = str.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
+//   return str;
+// }
+
+
+function twitterRequest(handle,num){
+  return new Promise((resolve,reject)=>{
+
+    twitter.getUserTimeline(
+      { screen_name: handle, count: num},
+      (err,res,body)=>{
+        console.log('error',err);
+        reject(err);
+      },(body)=>{
+        resolve(JSON.parse(body));
+        });
+      });
+
+
 }
 
-function pos(obj){
-  var a = new Promise((resolve,reject)=>{
-    try{
-      var res = {
-
-        // nouns: nlp(obj).nouns().data(),
-        // verbs: nlp(obj).verbs().data(),
-        // adverbs: nlp(obj).adverbs().data(),
-        // adjectives: nlp(obj).adjectives().data(),
-        places: nlp(obj).places().data(),
-        people: nlp(obj).people().data(),
-        hashtags:nlp(obj).hashTags().data(),
-        organizations:nlp(obj).organizations().data(),
-        acronyms:nlp(obj).acronyms().data()
-
-
-      };
-
-      resolve(res);
-    }catch(e){
-      reject(e);
-    }
-  });
-  return a;
-}
-
-module.exports = tweets;
+module.exports.twitterRequest = twitterRequest;
+module.exports.tweetProcessor = tweetProcessor;

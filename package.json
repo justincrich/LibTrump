@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node --inspect ./bin/www",
-    "scss": "sass --watch ./scss:./public/stylesheets"
+    "scss": "sass --watch ./scss:./public/stylesheets",
+    "test": "mocha --watch"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -19,5 +20,10 @@
     "serve-favicon": "~2.4.2",
     "twitter-node-client": "0.0.6"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "chai-as-promised": "^7.1.1",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.4.2"
+  }
 }
