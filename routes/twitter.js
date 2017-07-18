@@ -5,10 +5,13 @@ var swapsies = require('../models/nlp.js').swapsies;
 //enviornment variables
 require('dotenv').config();
 //Twitter config settings
+
+
 //Tweet Data
 var tweets = tweetProcessor();
 
 router.get('/', function(req, res, next) {
+
   res.render('index',{page:'index'});
 });
 
@@ -56,6 +59,7 @@ router.post('/fauxtweet/', function(req, res, next) {
 // router.get('/tweet/:id', function(req, res, next) {
 //
 // }
+
 
 
 
