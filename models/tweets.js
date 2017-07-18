@@ -37,7 +37,7 @@ var tweetProcessor = function (){
                 }
               }).then((length)=>{
                 if(keeper.length>=1){
-                  resolve(keeper.length);
+                  resolve(tweets.slice());
                 }else{
                   fetchTweets().load(handle,num+1);
                 }

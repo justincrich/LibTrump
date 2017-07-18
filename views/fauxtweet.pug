@@ -1,5 +1,6 @@
 extends layout
 block content
+  script(type='text/javascript') var tweet = !{JSON.stringify(swapsies)}
   div(class='tweetContainer')
     div(class='tweetBody')
       div(class='profileOverview')
@@ -11,7 +12,7 @@ block content
               span(class='badges')
             span(class='handle') @fakeDonaldTrump
       div(class='tweetTextContainer')
-        p(class='text') If Chelsea Clinton were asked to hold the seat for her mother,as her mother gave our country away, the Fake News would say CHELSEA FOR PRES!
+        p(class='text') 
       div(class='details')
         div(class='dateTime') 7:47 AM - 10 Jul 2017
   div(class="fixed-action-btn horizontal click-to-toggle")

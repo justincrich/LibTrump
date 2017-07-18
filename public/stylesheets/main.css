@@ -120,6 +120,13 @@ body {
         word-wrap: break-word;
         margin: 0;
         font-weight: 400; }
+        .tweetContainer .tweetBody .tweetTextContainer .text .pos {
+          color: #5384a7;
+          display: inline-block;
+          font-weight: bold; }
+          .tweetContainer .tweetBody .tweetTextContainer .text .pos:hover {
+            color: #1B95E0;
+            cursor: pointer; }
     .tweetContainer .tweetBody .details {
       margin-top: 10px;
       clear: both;
