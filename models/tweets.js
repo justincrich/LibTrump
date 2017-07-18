@@ -62,6 +62,7 @@ var tweetProcessor = function (){
 //   return str;
 // }
 
+
 function twitterRequest(handle,num){
   return new Promise((resolve,reject)=>{
 
@@ -74,6 +75,7 @@ function twitterRequest(handle,num){
         resolve(JSON.parse(body));
         });
       });
+
 
 }
 
