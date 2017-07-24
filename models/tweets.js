@@ -1,6 +1,7 @@
 //Parts of speach library
 var Twitter = require('twitter-node-client').Twitter;
 require('dotenv').config();
+console.log('key',process.env.TW_KEY);
 var config = {
     "consumerKey": process.env.TW_KEY,
     "consumerSecret": process.env.TW_SECRET,

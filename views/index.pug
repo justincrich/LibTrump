@@ -2,7 +2,7 @@ extends layout
 block content
   form(class='questionContainer' name='questionForm' method='post' action='/fauxtweet')
     div(class='input-field people')
-      input(type='text' required name='people' class='qField people') 
+      input(type='text' required name='people' class='qField people validate') 
       label(for='people' class='qLabel') Person
       div(class='helper') Ex: David Hasselhoff
     div(class='input-field places')

@@ -152,3 +152,15 @@
 
   }
 }
+
+/*----------ACTION BUTTON----------*/
+.actionContainer{
+  margin-top: 10px;
+  a{
+    background:$accent-color;
+    &:hover{
+      background:$accent-color;
+    }
+  }
+
+}

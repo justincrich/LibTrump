@@ -8,6 +8,8 @@ function partsOfSpeech(txt){
       let hashtags = nlp(txt).hashTags().data();
       let organizations = nlp(txt).organizations().data();
       let acronyms = nlp(txt).acronyms().data();
+      let verbs = nlp(txt).verbs().data();
+      let nouns = nlp(txt).nouns().data();
       let res = {};
       if(places.length>=1){
         res['places'] = places;
@@ -24,6 +26,12 @@ function partsOfSpeech(txt){
       if(acronyms.length >= 1){
         res['acronyms']=acronyms;
       }
+      // if(verbs.length >= 1){
+      //   res['verbs']=verbs;
+      // }
+      // if(nouns.length >= 1){
+      //   res['nouns']=nouns;
+      // }
 
 
       resolve(res);

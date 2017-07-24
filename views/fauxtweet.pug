@@ -2,6 +2,7 @@ extends layout
 block content
   script(type='text/javascript') var tweet = !{JSON.stringify(swapsies)}
   script(type='text/javascript') var output = !{JSON.stringify(data)}
+  
   div(class='tweetContainer')
     div(class='tweetBody')
       div(class='profileOverview')
@@ -16,15 +17,18 @@ block content
         p(class='text') 
       div(class='details')
         div(class='dateTime')
-  div(class="fixed-action-btn horizontal click-to-toggle")
-    a(class="btn-floating btn-large red")
-      i(class="material-icons") menu
-    ul
-      li
-        a(class="btn-floating red")
-        a(class="btn-floating yellow darken-1")
-        a(class="btn-floating green")
-        a(class="btn-floating blue")
+  div(class='actionContainer')
+    a(class="btn waves-effect waves-light" href='/') Create New TweetLib
+      i(class="material-icons left") add
+  
+  //- div(class="fixed-action-btn horizontal click-to-toggle tweet-action-button")
+  //-   a(class="btn-floating btn-large primary")
+  //-     i(class="material-icons") menu
+  //-   ul
+  //-     li
+  //-       a(class="btn-floating green tooltipped" data-position="top" data-delay="50" data-tooltip="New TweetLib" href='/')
+  //-         i(class="material-icons") create
+          
       
 
               

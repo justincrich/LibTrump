@@ -8,7 +8,6 @@ swapsies(tweet.tweetText,tweet.params,tweet.pos).then((output)=>{
   $('.dateTime').append(date);
 
 });
-'7:47 AM - 10 Jul 2017'
 
 
 function swapsies(tweetText,params,pos){
