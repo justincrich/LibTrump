@@ -1,6 +1,7 @@
 extends layout
 block content
   script(type='text/javascript') var tweet = !{JSON.stringify(swapsies)}
+  script(type='text/javascript') var output = !{JSON.stringify(data)}
   div(class='tweetContainer')
     div(class='tweetBody')
       div(class='profileOverview')
@@ -14,7 +15,7 @@ block content
       div(class='tweetTextContainer')
         p(class='text') 
       div(class='details')
-        div(class='dateTime') 7:47 AM - 10 Jul 2017
+        div(class='dateTime')
   div(class="fixed-action-btn horizontal click-to-toggle")
     a(class="btn-floating btn-large red")
       i(class="material-icons") menu

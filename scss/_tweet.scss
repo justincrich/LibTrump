@@ -1,0 +1,154 @@
+@import 'colors';
+@import 'mixins';
+.tweetContainer{
+  color:$tweet-text;
+  font-size: 14px;
+  background:$tweet-background;
+  border-radius: 8px;
+  border:1px solid rgba(0,0,0,0.1);
+  background-clip: padding-box;
+  width:75%;
+  line-height: 1.375;
+  margin-top: 30px;
+  /*----------Start Tweet Body Formatting----------*/
+  .tweetBody{
+    outline:0;
+    cursor:default;
+    padding:30px 40px;
+    min-height: 51px;
+    /*----------Start Tweet Profile Overview----------*/
+    .profileOverview{
+      display: flex;
+      flex-direction: row;
+      a{
+        color:#1B1F21;
+        &:hover{
+          color:$tweet-accent;
+        }
+      }
+      .img{
+        border-radius:50%;
+        width:48px;
+        height:48px;
+        border:0;
+        margin-right: 10px;
+        cursor:auto;
+      }
+      .accountInfo{
+        margin-bottom: 15px;
+        .nameContainer{
+          font-size: 18px;
+          line-height: 24px;
+          font-weight: bold;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+        .handle{
+          color:#657786;
+          font-size:14px;
+          font-weight: 400;
+        }
+      }
+    }
+    /*----------Start Tweet Text----------*/
+    .tweetTextContainer{
+      display:block;
+      .text{
+        font-size:1.25rem;
+        line-height: 1.5em;
+        letter-spacing: .01em;
+        font-weight: normal;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        text-align: left;
+        direction: ltr;
+        margin:0;
+
+
+        @include mq('tablet'){
+          font-weight: 400;
+          font-size: 27px;
+          line-height: 32px;
+        }
+        .pos{
+          color:$accent-color;
+          display:inline-block;
+          font-weight: bold;
+          &:hover{
+            color:$tweet-accent;
+
+          }
+        }
+      }
+
+    }
+    /*----------Start Interactions Details----------*/
+    .details{
+      margin-top: 10px;
+      clear:both;
+      .dateTime{
+        color:#657786;
+        font-size:14px;
+        font-weight: 400;
+        line-height: 24px;
+
+      }
+      .interactions{
+        margin-top: 10px;
+        padding-top:12px;
+        margin-bottom: 10px;
+        padding-bottom:12px;
+        border-top:1px solid #e6ecf0;
+        border-bottom:1px solid #e6ecf0;
+        width:100%;
+        list-style: none;
+        padding:0;
+        display:block;
+        li{
+          margin-right:10px;
+          overflow:hidden;
+          float:left;
+          text-align: inherit;
+
+          display: flex;
+          align-items: center;
+          strong{
+            margin-right:4px;
+            font-weight: bold;
+            font-size: 14px;
+            display: inline;
+            line-height: 20px;
+          }
+          p{
+            font-size: 14px;
+            font-weight: normal;
+            padding-right: 0;
+            color:#657786;
+            line-height: 16px;
+          }
+        }
+        .people{
+          border-left: 1px solid #e6ecf0;
+          padding: 11px 0;
+          padding-left: 12px;
+
+          img{
+            float:left;
+            margin-right:5px;
+            border-radius: 50%;
+            width:24px;
+            height: 24px;
+            border:0px;
+          }
+        }
+
+      }
+      /*----------Start Footer Details----------*/
+      .foot{
+        margin-top: 10px;
+      }
+    }
+
+  }
+}

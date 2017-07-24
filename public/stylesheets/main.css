@@ -1,6 +1,7 @@
 /*--------------DEPENDENCIES-------------------*/
 /*--------------DEPENDENCIES-------------------*/
 /*--------------COLORS-------------------*/
+/*-------------MEDIA QUERY SIZES------------*/
 /* ------------------FONTS------------------- */
 html {
   background: #86c1bc;
@@ -21,6 +22,7 @@ body {
   width: 40%; }
 
 /*--------------COLORS-------------------*/
+/*-------------MEDIA QUERY SIZES------------*/
 /*--------------COLORS-------------------*/
 .questionContainer {
   width: 60%; }
@@ -65,6 +67,8 @@ body {
     margin-bottom: 5px; }
 
 /*--------------COLORS-------------------*/
+/*--------------Dependencies----------------*/
+/*-------------MEDIA QUERY SIZES------------*/
 .tweetContainer {
   color: #14171a;
   font-size: 14px;
@@ -113,20 +117,26 @@ body {
     .tweetContainer .tweetBody .tweetTextContainer {
       display: block; }
       .tweetContainer .tweetBody .tweetTextContainer .text {
-        font-size: 27px;
-        line-height: 32px;
+        font-size: 1.25rem;
+        line-height: 1.5em;
         letter-spacing: .01em;
+        font-weight: normal;
         white-space: pre-wrap;
         word-wrap: break-word;
-        margin: 0;
-        font-weight: 400; }
+        text-align: left;
+        direction: ltr;
+        margin: 0; }
+        @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+          .tweetContainer .tweetBody .tweetTextContainer .text {
+            font-weight: 400;
+            font-size: 27px;
+            line-height: 32px; } }
         .tweetContainer .tweetBody .tweetTextContainer .text .pos {
           color: #5384a7;
           display: inline-block;
           font-weight: bold; }
           .tweetContainer .tweetBody .tweetTextContainer .text .pos:hover {
-            color: #1B95E0;
-            cursor: pointer; }
+            color: #1B95E0; }
     .tweetContainer .tweetBody .details {
       margin-top: 10px;
       clear: both;

@@ -49,7 +49,7 @@ router.post('/fauxtweet/', function(req, res, next) {
         tweetText: output[0].text,
         params: req.body,
         pos: output[0].pos
-      },oldTweet:output[0].text});
+      },data:output});
     });
   }
 });

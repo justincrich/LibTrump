@@ -1,11 +1,14 @@
+let date = new Date(output[0].user.created_at);
+console.log(date.toLocaleTimeString('en-US'));
 
 swapsies(tweet.tweetText,tweet.params,tweet.pos).then((output)=>{
   $('.tweetTextContainer .text').append(output);
-  console.log('output: ',output);
-  console.log('params: ',tweet.params);
-  console.log('pos: ',tweet.pos);
-});
+  let time = date.toLocaleTimeString('en-US');
+  let date = date.date;
+  $('.dateTime').append(date);
 
+});
+'7:47 AM - 10 Jul 2017'
 
 
 function swapsies(tweetText,params,pos){
