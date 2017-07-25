@@ -8,7 +8,7 @@ var config = {
     "accessTokenSecret": process.env.TW_TOKENSECRET,
     "callBackUrl": process.env.TW_CALLBACKURL
 };
-console.log(process.env.TW_KEY, process.env.TW_CALLBACKURL);
+
 //Setup twitter object
 var twitter = new Twitter(config);
 var partsOfSpeech = require('./nlp.js').partsOfSpeech;
@@ -16,6 +16,7 @@ var partsOfSpeech = require('./nlp.js').partsOfSpeech;
 
 var tweetProcessor = function (){
   let tweets = [];
+
   return {
       load: (handle,num)=>{
           return new Promise((resolve,reject)=>{
@@ -65,8 +66,9 @@ var tweetProcessor = function (){
 
 
 function twitterRequest(handle,num){
-  return new Promise((resolve,reject)=>{
 
+  return new Promise((resolve,reject)=>{
+    console.log('TESTTTT',process.env.TW_KEY, process.env.TW_CALLBACKURL);
     twitter.getUserTimeline(
       { screen_name: handle, count: num},
       (err,res,body)=>{
