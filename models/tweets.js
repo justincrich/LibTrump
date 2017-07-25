@@ -68,7 +68,6 @@ var tweetProcessor = function (){
 function twitterRequest(handle,num){
 
   return new Promise((resolve,reject)=>{
-    console.log('TESTTTT',process.env.TW_KEY, process.env.TW_CALLBACKURL);
     twitter.getUserTimeline(
       { screen_name: handle, count: num},
       (err,res,body)=>{
