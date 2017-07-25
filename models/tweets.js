@@ -8,6 +8,7 @@ var config = {
     "accessTokenSecret": process.env.TW_TOKENSECRET,
     "callBackUrl": process.env.TW_CALLBACKURL
 };
+console.log(process.env.TW_KEY, process.env.TW_CALLBACKURL);
 //Setup twitter object
 var twitter = new Twitter(config);
 var partsOfSpeech = require('./nlp.js').partsOfSpeech;
