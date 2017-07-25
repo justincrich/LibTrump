@@ -1,9 +1,8 @@
 {
   "name": "trumplibs",
   "version": "1.0.0",
-  "description":"A game where users can create their own Trump tweets",
-  "main":"app.js",
-  "author":"justin-rich",
+  "description": "A game where users can create their own Trump tweets",
+  "author": "justin-rich",
   "scripts": {
     "start": "node --inspect ./bin/www",
     "scss": "sass --watch ./scss:./public/stylesheets",
@@ -23,8 +22,8 @@
     "serve-favicon": "~2.4.2",
     "twitter-node-client": "0.0.6"
   },
-  "engines":{
-    "node":"8.1.4"
+  "engines": {
+    "node": "8.1.4"
   },
   "devDependencies": {
     "chai": "^4.1.0",
