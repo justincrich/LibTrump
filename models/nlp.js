@@ -3,6 +3,7 @@ var nlp = require('compromise');
 function partsOfSpeech(txt){
   return new Promise((resolve,reject)=>{
     try{
+      console.log('parts of speech');
       let places = nlp(txt).places().data();
       let people = nlp(txt).people().data();
       let hashtags = nlp(txt).hashTags().data();
@@ -33,7 +34,7 @@ function partsOfSpeech(txt){
       //   res['nouns']=nouns;
       // }
 
-
+      console.log('results',res);
       resolve(res);
 
     }catch(e){
