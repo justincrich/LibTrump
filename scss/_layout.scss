@@ -23,3 +23,15 @@ body{
   z-index:-1000;
   width:40%;
 }
+
+.spinner{
+  color:$accent-color;
+  position:fixed;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}

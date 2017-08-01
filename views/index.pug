@@ -1,6 +1,12 @@
 extends layout
 block content
-  form(class='questionContainer' name='questionForm' method='post' action='/fauxtweet')
+  div(class='navTabsBody')
+    ul(class='tabs')
+      li(class='tab latestTweet')
+        a(class='latestLink' href='#currentTweetTab') Lib The Latest Tweet
+      li(class='tab pickATweet')
+        a(class='pickLink' href='#pickTweetTab') Pick A Tweet To Lib
+  form(id='currentTweetTab' class='questionContainer' name='questionForm' method='post' action='/fauxtweet')
     div(class='input-field people')
       input(type='text' required name='people' class='qField people validate') 
       label(for='people' class='qLabel') Person
@@ -19,3 +25,6 @@ block content
       div(class='helper') Ex: FBI
     div(class='buttonBox')
       button(class='btn waves-effect waves-light submitButton' type="submit" name="action" value='Submit') Submit
+  div(id='pickTweetTab')
+    h5 Latest Tweets
+    

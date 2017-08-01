@@ -21,6 +21,17 @@ body {
   z-index: -1000;
   width: 40%; }
 
+.spinner {
+  color: #5384a7;
+  position: fixed;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none; }
+
 /*--------------COLORS-------------------*/
 /*-------------MEDIA QUERY SIZES------------*/
 /*--------------COLORS-------------------*/
@@ -206,5 +217,45 @@ body {
     background: #5384a7; }
     .actionContainer a:hover {
       background: #5384a7; }
+
+/*--------------COLORS-------------------*/
+/*--------------Dependencies----------------*/
+/*-------------MEDIA QUERY SIZES------------*/
+.navTabsBody ul {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .navTabsBody ul li a {
+    color: #5384a7 !important; }
+  .navTabsBody ul li .indicator {
+    color: #5384a7 !important; }
+.navTabsBody .tabs .indicator {
+  background-color: #5384a7 !important; }
+
+/*--------------COLORS-------------------*/
+/*--------------Dependencies----------------*/
+/*-------------MEDIA QUERY SIZES------------*/
+#pickTweetTab {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column; }
+  @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+    #pickTweetTab {
+      width: 50%; } }
+  @media screen and (min-width: 1200px) {
+    #pickTweetTab {
+      width: 70%; } }
+  #pickTweetTab .tweetContainer {
+    display: flex;
+    align-items: center;
+    margin: 20px 0; }
+    #pickTweetTab .tweetContainer .tweetBody {
+      width: 100%;
+      cursor: pointer; }
+      #pickTweetTab .tweetContainer .tweetBody .nameContainer:hover, #pickTweetTab .tweetContainer .tweetBody a:hover {
+        color: #14171a;
+        text-decoration: none !important; }
 
 /*# sourceMappingURL=main.css.map */
