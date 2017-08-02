@@ -1,30 +1,38 @@
 extends layout
 block content
-  div(class='navTabsBody')
-    ul(class='tabs')
-      li(class='tab latestTweet')
-        a(class='latestLink' href='#currentTweetTab') Lib The Latest Tweet
-      li(class='tab pickATweet')
-        a(class='pickLink' href='#pickTweetTab') Pick A Tweet To Lib
-  form(id='currentTweetTab' class='questionContainer' name='questionForm' method='post' action='/fauxtweet')
-    div(class='input-field people')
-      input(type='text' required name='people' class='qField people validate') 
-      label(for='people' class='qLabel') Person
-      div(class='helper') Ex: David Hasselhoff
-    div(class='input-field places')
-      input(type='text' required name='places' class='qField place') 
-      label(for='places' class='qLabel') Place
-      div(class='helper') Ex: Disney Land
-    div(class='input-field organizations')
-      input(type='text' required name='organizations' class='qField org') 
-      label(for='organizations' class='qLabel') Organization
-      div(class='helper') Ex: The Boy Scouts
-    div(class='input-field acronyms')
-      input(type='text' required name='acronyms' class='qField acronym') 
-      label(for='acronyms' class='qLabel') Acronym
-      div(class='helper') Ex: FBI
-    div(class='buttonBox')
-      button(class='btn waves-effect waves-light submitButton' type="submit" name="action" value='Submit') Submit
-  div(id='pickTweetTab')
-    h5 Latest Tweets
+  //- div(class='navTabsBody')
+  //-   ul(id='tabs' class='tabs')
+  //-     li(id='tab1' class='tab latestTweet')
+  //-       a(class='latestLink' href='#libATweetTab') Lib A Tweet
+  //-     li(id='tab2' class='tab pickATweet')
+  //-       a(class='pickLink' href='#pickTweetTab') Pick A Tweet To Lib
+  form(id='libATweetTab' class='questionContainer' name='questionForm' method='post' action='/fauxtweet')
+    div(class='spinner')
+      div(class='preloader-wrapper big active')
+        div(class='spinner-layer spinner-blue-only')
+          div(class='circle-clipper left')
+            div(class='circle')
+          div(class='gap-patch')
+            div(class='circle')
+          div(class='circle-clipper right')
+            div(class='circle')
+    //- div(class='input-field people')
+    //-   input(type='text' required name='people' class='qField people validate') 
+    //-   label(for='people' class='qLabel') Person
+    //-   div(class='helper') Ex: David Hasselhoff
+    //- div(class='input-field places')
+    //-   input(type='text' required name='places' class='qField place') 
+    //-   label(for='places' class='qLabel') Place
+    //-   div(class='helper') Ex: Disney Land
+    //- div(class='input-field organizations')
+    //-   input(type='text' required name='organizations' class='qField org') 
+    //-   label(for='organizations' class='qLabel') Organization
+    //-   div(class='helper') Ex: The Boy Scouts
+    //- div(class='input-field acronyms')
+    //-   input(type='text' required name='acronyms' class='qField acronym') 
+    //-   label(for='acronyms' class='qLabel') Acronym
+    //-   div(class='helper') Ex: FBI
+    //- div(class='buttonBox')
+    //-   button(class='btn waves-effect waves-light submitButton' type="submit" name="action" value='Submit') Submit
+
     

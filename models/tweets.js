@@ -26,22 +26,30 @@ var tweetProcessor = function (){
                 for(let i = 0;i<arr.length; i++){
                   partsOfSpeech(arr[i].text).then(obj=>{
                     let length = Object.keys(obj).length;
+                    arr[i].pos = obj;
+                    //Store all the twitter provided entities
 
-                    if(length>=1){
-                      arr[i].pos = obj;
-                      keeper.push(arr[i]);
+                    //for hashtags
+                    if(arr[i].entities.hashtags.length >=1){
+                      arr[i].pos['hashtag'] = arr[i].entities.hashtags;
                     }
+                    //for user mentions
+                    let userment = arr[i].entities.user_mentions;
+                    if(userment.length >=1){
+                      userment.forEach(mention=>{
+                        console.log("user mention!!!",mention.screen_name);
+                        arr[i].pos['person'].push({
+                          text:mention.screen_name
+                        });
+                      });
+                    }
+                    keeper.push(arr[i]);
                     if(i===(arr.length-1)){
+
                       tweets = keeper;
-                      return keeper.length;
+                      resolve(keeper);
                     }
                   });
-                }
-              }).then((length)=>{
-                if(keeper.length>=1){
-                  resolve(tweets.slice());
-                }else{
-                  fetchTweets().load(handle,num+1);
                 }
               }).catch(e=>{throw e});
             }catch (e){

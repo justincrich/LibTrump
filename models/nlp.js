@@ -11,28 +11,34 @@ function partsOfSpeech(txt){
       let acronyms = nlp(txt).acronyms().data();
       let verbs = nlp(txt).verbs().data();
       let nouns = nlp(txt).nouns().data();
+      let statements = nlp(txt).statements().data();
       let res = {};
-      if(places.length>=1){
-        res['places'] = places;
-      }
-      if(people.length>=1){
-        res['people'] = people;
-      }
+      // if(places.length>=1){
+      //   res['place'] = places;
+      // }
+      // if(people.length>=1){
+      //   res['person'] = people;
+      // }
       if(hashtags.length>=1){
-        res['hashtags'] = hashtags;
+        res['hashtag'] = hashtags;
       }
       if(organizations.length>=1){
-        res['organizations'] = organizations;
+        res['organization'] = organizations;
       }
       if(acronyms.length >= 1){
-        res['acronyms']=acronyms;
+        res['acronym']=acronyms;
       }
       // if(verbs.length >= 1){
       //   res['verbs']=verbs;
       // }
-      // if(nouns.length >= 1){
-      //   res['nouns']=nouns;
-      // }
+      if(nouns.length >= 1){
+        // let temp = [];
+        // nouns.forEach(noun=>{
+        //   if(noun != "")
+        // });
+        res['noun']=nouns;
+      }
+
 
       console.log('results',res);
       resolve(res);
