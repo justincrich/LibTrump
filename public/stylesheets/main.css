@@ -236,26 +236,44 @@ body {
 /*--------------COLORS-------------------*/
 /*--------------Dependencies----------------*/
 /*-------------MEDIA QUERY SIZES------------*/
-#pickTweetTab {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column; }
-  @media screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
-    #pickTweetTab {
-      width: 50%; } }
-  @media screen and (min-width: 1200px) {
-    #pickTweetTab {
-      width: 70%; } }
-  #pickTweetTab .tweetContainer {
+#moreTweetsModalIndex {
+  overflow: hidden;
+  height: 90% !important; }
+  #moreTweetsModalIndex .modal-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    z-index: 1000; }
+    #moreTweetsModalIndex .modal-header h5 {
+      color: #14171a;
+      margin: 15px 0; }
+  #moreTweetsModalIndex p {
+    color: #14171a; }
+  #moreTweetsModalIndex a {
+    color: #5384a7; }
+  #moreTweetsModalIndex .modal-content {
     display: flex;
     align-items: center;
-    margin: 20px 0; }
-    #pickTweetTab .tweetContainer .tweetBody {
+    flex-direction: column;
+    height: 75%;
+    overflow: scroll;
+    padding: 0 24px; }
+    #moreTweetsModalIndex .modal-content .modal-tweets .tweetContainer {
+      display: flex;
+      align-items: center;
       width: 100%;
-      cursor: pointer; }
-      #pickTweetTab .tweetContainer .tweetBody .nameContainer:hover, #pickTweetTab .tweetContainer .tweetBody a:hover {
-        color: #14171a;
-        text-decoration: none !important; }
+      z-index: -1; }
+      #moreTweetsModalIndex .modal-content .modal-tweets .tweetContainer .tweetBody {
+        width: 100%;
+        cursor: pointer; }
+        #moreTweetsModalIndex .modal-content .modal-tweets .tweetContainer .tweetBody .nameContainer:hover, #moreTweetsModalIndex .modal-content .modal-tweets .tweetContainer .tweetBody a:hover {
+          color: #14171a;
+          text-decoration: none !important; }
+  #moreTweetsModalIndex .modal-footer {
+    border-top: 1px solid #e5e5e5;
+    z-index: 10;
+    height: 10%; }
 
 /*# sourceMappingURL=main.css.map */

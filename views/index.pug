@@ -7,15 +7,11 @@ block content
   //-     li(id='tab2' class='tab pickATweet')
   //-       a(class='pickLink' href='#pickTweetTab') Pick A Tweet To Lib
   form(id='libATweetTab' class='questionContainer' name='questionForm' method='post' action='/fauxtweet')
-    div(class='spinner')
-      div(class='preloader-wrapper big active')
-        div(class='spinner-layer spinner-blue-only')
-          div(class='circle-clipper left')
-            div(class='circle')
-          div(class='gap-patch')
-            div(class='circle')
-          div(class='circle-clipper right')
-            div(class='circle')
+    h5(id='formTitle') Lib The Latest Tweet
+    div(id='formIndicator')
+      p Loading...
+      div(class='progress')
+        div(class='indeterminate')
     //- div(class='input-field people')
     //-   input(type='text' required name='people' class='qField people validate') 
     //-   label(for='people' class='qLabel') Person
@@ -32,7 +28,17 @@ block content
     //-   input(type='text' required name='acronyms' class='qField acronym') 
     //-   label(for='acronyms' class='qLabel') Acronym
     //-   div(class='helper') Ex: FBI
-    //- div(class='buttonBox')
-    //-   button(class='btn waves-effect waves-light submitButton' type="submit" name="action" value='Submit') Submit
+    div(class='buttonBox')
+      a(id="formMoreTweetsBtn" class='waves-effect waves-light btn modal-trigger' href='#moreTweetsModalIndex') Pick A Tweet
+      button(class='btn waves-effect waves-light submitButton' type="submit" name="action" value='Submit') Submit
+  div(id='moreTweetsModalIndex' class='modal')
+    div(class='modal-header')
+      h5 Pick A Tweet To Lib
+    div(class='modal-content')
+      div(class='modal-tweets')
+    div(class='modal-footer')
+      a(id='moreTweetsModalIndexClose' href='#!' class='modal-action modal-close waves-effect waves-green btn-flat') Close
+    
+      
 
     
