@@ -39,6 +39,7 @@
   .qLabel{
     font-size: 2rem;
     color:$text-color-default;
+    z-index: -10;
 
   }
   .buttonBox{
@@ -48,12 +49,14 @@
     .submitButton{
       font-weight: normal;
       background:$filed-color-active;
-      
+      width: 50%;
+
     }
     #formMoreTweetsBtn{
       font-weight: normal;
-      background:$filed-triadic-color;
+      background:$filed-color-passive;
       margin-right: 15px;
+      width: 50%;
     }
   }
 }

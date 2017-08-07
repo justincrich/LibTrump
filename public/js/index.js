@@ -45,7 +45,6 @@ fetch("/tweet/5")
 
   $( document ).ready(function() {
 			$('.modal').modal();
-      console.log('on load',tweetStore);
 
 			//handle pick a tweet activity
 			$('#formMoreTweetsBtn').on('click',()=>{
@@ -68,27 +67,13 @@ fetch("/tweet/5")
 							selectedTweet = tweetStore.splice(id,1)[0];
 							$('#libATweetTab').contents(':not(.buttonBox)').remove();
 							loadInput(selectedTweet.pos,selectedTweet.totPOSCount);
+							$('#moreTweetsModalIndex').modal('close');
 						});
 						$('#moreTweetsModalIndex .modal-content .modal-tweets').append(
 							card);
 					});
 				}
 			});
-
-
-			//handles case where no tweet is selected but close is clicked
-      $('#moreTweetsModalIndexClose').on('click',(e)=>{
-        // //clear out the pick tweet tab each time you nav from the tab
-        // $('#libATweetTab').empty();
-        // //if there's no tweet on hold get one
-        // if(selectedTweet === undefined){
-        //   $('#libATweetTab').empty();
-        //   selectedTweet = tweetStore.shift();
-        //   loadInput(selectedTweet.pos);
-        // }
-
-      });
-
 
 			//handle form submit
 			$('#sumbitIndexForm').on('click',(e)=>{
