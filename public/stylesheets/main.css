@@ -270,20 +270,23 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 100%;
     overflow: scroll;
-    padding: 0 24px; }
-    #moreTweetsModalIndex .modal-content .tweetContainer {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      z-index: -1; }
-      #moreTweetsModalIndex .modal-content .tweetContainer .tweetBody {
+    padding: 0 24px;
+    height: 380px; }
+    #moreTweetsModalIndex .modal-content .modal-tweets {
+      height: 100%; }
+      #moreTweetsModalIndex .modal-content .modal-tweets .tweetContainer {
+        display: flex;
+        align-items: center;
         width: 100%;
-        cursor: pointer; }
-        #moreTweetsModalIndex .modal-content .tweetContainer .tweetBody .nameContainer:hover, #moreTweetsModalIndex .modal-content .tweetContainer .tweetBody a:hover {
-          color: #14171a;
-          text-decoration: none !important; }
+        z-index: -1;
+        margin: 20px 0; }
+        #moreTweetsModalIndex .modal-content .modal-tweets .tweetContainer .tweetBody {
+          width: 100%;
+          cursor: pointer; }
+          #moreTweetsModalIndex .modal-content .modal-tweets .tweetContainer .tweetBody .nameContainer:hover, #moreTweetsModalIndex .modal-content .modal-tweets .tweetContainer .tweetBody a:hover {
+            color: #14171a;
+            text-decoration: none !important; }
   #moreTweetsModalIndex .modal-footer {
     border-top: 1px solid #e5e5e5;
     z-index: 10;

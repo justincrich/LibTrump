@@ -31,15 +31,18 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 100%;
     overflow: scroll;
     padding: 0 24px;
+    height: 380px;
+    .modal-tweets{
+      height: 100%;
 
       .tweetContainer{
         display: flex;
         align-items: center;
         width: 100%;
         z-index: -1;
+        margin: 20px 0;
 
         .tweetBody{
           width:100%;
@@ -52,6 +55,7 @@
         }
 
       }
+    }
 
   }
 

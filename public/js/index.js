@@ -44,7 +44,12 @@ fetch("/tweet/5")
   });
 
   $( document ).ready(function() {
-			$('.modal').modal();
+			$('.modal').modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      complete: function() {
+				$('#moreTweetsModalIndex .modal-content .modal-tweets').empty();
+			} // Callback for Modal close
+    });
 
 			//handle pick a tweet activity
 			$('#formMoreTweetsBtn').on('click',()=>{
