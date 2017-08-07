@@ -61,7 +61,7 @@ describe('NLP', function(){
       });
     });
   });
-  describe('swapsies',function(){
+  xdescribe('swapsies',function(){
 
     it('Text swapped. New Text: ',()=>{
       return swapsies(text.good,params,pos).then((output)=>{

@@ -14,39 +14,62 @@ var twitter = new Twitter(config);
 var partsOfSpeech = require('./nlp.js').partsOfSpeech;
 
 
+
 var tweetProcessor = function (){
   let tweets = [];
-
   return {
+    //load all requests
       load: (handle,num)=>{
           return new Promise((resolve,reject)=>{
+            //object that stores all tweets to return
             let keeper = [];
             try{
               twitterRequest(handle,num).then(arr=>{
                 for(let i = 0;i<arr.length; i++){
-                  partsOfSpeech(arr[i].text).then(obj=>{
+                  //process parts of speach (noun, person, etc)
+                  partsOfSpeech(arr[i].text).then((resArr)=>{
+                    let obj = resArr[0];
+                    let totPOS = resArr[1];
+                    console.log('total part',totPOS);
                     let length = Object.keys(obj).length;
                     arr[i].pos = obj;
                     //Store all the twitter provided entities
 
                     //for hashtags
                     if(arr[i].entities.hashtags.length >=1){
+
                       arr[i].pos['hashtag'] = arr[i].entities.hashtags;
+                      totPOS['hashtags'] = arr[i].entities.hashtags.length;
                     }
                     //for user mentions
                     let userment = arr[i].entities.user_mentions;
                     if(userment.length >=1){
+
                       userment.forEach(mention=>{
-                        console.log("user mention!!!",mention.screen_name);
-                        arr[i].pos['person'].push({
-                          text:mention.screen_name
-                        });
+                        if(arr[i].pos['handle']){
+                          //if there's current a person array
+                          arr[i].pos['handle'].push({
+                            text:mention.screen_name
+                          });
+                        }else{
+                          arr[i].pos['handle'] = [{
+                            text:mention.screen_name
+                          }];
+                        }
                       });
+                      totPOS['handles'] = arr[i].pos['handle'].length;
+
                     }
-                    keeper.push(arr[i]);
+                    arr[i].totPOSCount = totPOS;
+                    let keys = Object.keys(arr[i].pos);
+                    console.log(keys);
+                    if(keys.length>0){
+                      keeper.push(arr[i]);
+                    }
                     if(i===(arr.length-1)){
 
                       tweets = keeper;
+                      console.log('resolve');
                       resolve(keeper);
                     }
                   });
@@ -64,13 +87,7 @@ var tweetProcessor = function (){
   };
 }
 
-// function cleanText(str){
-//   //remove hashtags
-//   str = str.replace(/\#\w\w+\s?/g, '');
-//   //remove links
-//   str = str.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
-//   return str;
-// }
+
 
 
 function twitterRequest(handle,num){
@@ -79,7 +96,6 @@ function twitterRequest(handle,num){
     twitter.getUserTimeline(
       { screen_name: handle, count: num},
       (err,res,body)=>{
-        console.log('error',err);
         reject(err);
       },(body)=>{
         resolve(JSON.parse(body));

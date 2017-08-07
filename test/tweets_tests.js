@@ -56,7 +56,6 @@ describe('Tweet Processing', function(){
     it('Data Returned', function(){
       var promise = tweets.load(handle,1);
       return promise.then(output=>{
-        console.log('OUTTTTTT',output.length)
         var arrLength = output.length;
         if(arrLength>0){
           this._runnable.title = this._runnable.title+`: result output is ${arrLength}`;

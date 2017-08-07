@@ -48,6 +48,12 @@
     .submitButton{
       font-weight: normal;
       background:$filed-color-active;
+      
+    }
+    #formMoreTweetsBtn{
+      font-weight: normal;
+      background:$filed-triadic-color;
+      margin-right: 15px;
     }
   }
 }

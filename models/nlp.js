@@ -3,45 +3,41 @@ var nlp = require('compromise');
 function partsOfSpeech(txt){
   return new Promise((resolve,reject)=>{
     try{
-      console.log('parts of speech');
+
       let places = nlp(txt).places().data();
       let people = nlp(txt).people().data();
-      let hashtags = nlp(txt).hashTags().data();
+      // let hashtags = nlp(txt).hashTags().data();
       let organizations = nlp(txt).organizations().data();
-      let acronyms = nlp(txt).acronyms().data();
-      let verbs = nlp(txt).verbs().data();
-      let nouns = nlp(txt).nouns().data();
-      let statements = nlp(txt).statements().data();
+      // let verbs = nlp(txt).verbs().data();
+      // let nouns = nlp(txt).nouns().data();
+
       let res = {};
-      // if(places.length>=1){
-      //   res['place'] = places;
-      // }
-      // if(people.length>=1){
-      //   res['person'] = people;
-      // }
-      if(hashtags.length>=1){
-        res['hashtag'] = hashtags;
+      let totPOS = {};
+
+      if(places.length>=1){
+        res['place'] = places;
+        totPOS['places'] = places.length;
       }
       if(organizations.length>=1){
         res['organization'] = organizations;
+        totPOS['organizations'] = organizations.length;
       }
-      if(acronyms.length >= 1){
-        res['acronym']=acronyms;
-      }
-      // if(verbs.length >= 1){
-      //   res['verbs']=verbs;
-      // }
-      if(nouns.length >= 1){
-        // let temp = [];
-        // nouns.forEach(noun=>{
-        //   if(noun != "")
-        // });
-        res['noun']=nouns;
+      if(people.length>=1){
+        res['person'] = people;
+        totPOS['people'] = people.length;
       }
 
 
-      console.log('results',res);
-      resolve(res);
+
+      //sum up POS parts to be used in determining the number of fields
+      let sum = 0;
+      for (i in totPOS){
+        sum += totPOS[i];
+      }
+      totPOS['total'] = sum;
+
+
+      resolve([res,totPOS]);
 
     }catch(e){
       reject(e);

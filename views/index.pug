@@ -1,36 +1,14 @@
 extends layout
 block content
-  //- div(class='navTabsBody')
-  //-   ul(id='tabs' class='tabs')
-  //-     li(id='tab1' class='tab latestTweet')
-  //-       a(class='latestLink' href='#libATweetTab') Lib A Tweet
-  //-     li(id='tab2' class='tab pickATweet')
-  //-       a(class='pickLink' href='#pickTweetTab') Pick A Tweet To Lib
   form(id='libATweetTab' class='questionContainer' name='questionForm' method='post' action='/fauxtweet')
     h5(id='formTitle') Lib The Latest Tweet
     div(id='formIndicator')
       p Loading...
       div(class='progress')
         div(class='indeterminate')
-    //- div(class='input-field people')
-    //-   input(type='text' required name='people' class='qField people validate') 
-    //-   label(for='people' class='qLabel') Person
-    //-   div(class='helper') Ex: David Hasselhoff
-    //- div(class='input-field places')
-    //-   input(type='text' required name='places' class='qField place') 
-    //-   label(for='places' class='qLabel') Place
-    //-   div(class='helper') Ex: Disney Land
-    //- div(class='input-field organizations')
-    //-   input(type='text' required name='organizations' class='qField org') 
-    //-   label(for='organizations' class='qLabel') Organization
-    //-   div(class='helper') Ex: The Boy Scouts
-    //- div(class='input-field acronyms')
-    //-   input(type='text' required name='acronyms' class='qField acronym') 
-    //-   label(for='acronyms' class='qLabel') Acronym
-    //-   div(class='helper') Ex: FBI
     div(class='buttonBox')
-      a(id="formMoreTweetsBtn" class='waves-effect waves-light btn modal-trigger' href='#moreTweetsModalIndex') Pick A Tweet
-      button(class='btn waves-effect waves-light submitButton' type="submit" name="action" value='Submit') Submit
+      a(id="formMoreTweetsBtn"  class='waves-effect waves-light btn modal-trigger' href='#moreTweetsModalIndex') Pick A Tweet
+      a(id="sumbitIndexForm" class='btn waves-effect waves-light submitButton' href='') Submit
   div(id='moreTweetsModalIndex' class='modal')
     div(class='modal-header')
       h5 Pick A Tweet To Lib

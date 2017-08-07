@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/tweet/5";
+const url = document.URL;
 let tweetStore = [];
 let selectedTweet = null;
 let loading = true;
@@ -30,7 +30,7 @@ const tweetCard=
 //load the tweets into the store
 //start loading processer
 $('#formIndicator').show();
-fetch(url)
+fetch("/tweet/5")
   .then(res=> {
     return res.json();
   })
@@ -40,7 +40,7 @@ fetch(url)
     console.log('tweets',tweetStore);
     selectedTweet = tweetStore.shift();
 		$('#formIndicator').hide();
-    loadInput(selectedTweet.pos);
+    loadInput(selectedTweet.pos, selectedTweet.totPOSCount);
   });
 
   $( document ).ready(function() {
@@ -67,7 +67,7 @@ fetch(url)
 							let id = $(e.target).closest(".tweetContainer").attr('id');
 							selectedTweet = tweetStore.splice(id,1)[0];
 							$('#libATweetTab').contents(':not(.buttonBox)').remove();
-							loadInput(selectedTweet.pos);
+							loadInput(selectedTweet.pos,selectedTweet.totPOSCount);
 						});
 						$('#moreTweetsModalIndex .modal-content .modal-tweets').append(
 							card);
@@ -90,6 +90,32 @@ fetch(url)
       });
 
 
+			//handle form submit
+			$('#sumbitIndexForm').on('click',(e)=>{
+				e.preventDefault();
+				//check to see if each field is filled in the form
+				let isValid = true;
+				$('input.qField').each((index)=>{
+
+						let arr = document.getElementsByClassName('qField');
+
+					if(arr[index].value===''){
+						isValid = false;
+					};
+				});
+				if(isValid){
+					$('<input />').attr('type','hidden')
+						.attr('name','tweet')
+						.attr('value',JSON.stringify(selectedTweet))
+						.appendTo('#libATweetTab');
+					console.log('tap');
+					document.questionForm.submit();
+				}else{
+					Materialize.toast('Uh Oh! Looks like you missed a spot.', 4000,'validationError');
+				}
+
+			});
+
 
   });
 
@@ -103,45 +129,42 @@ fetch(url)
   //function that determines how may inputs we can take on the tweet,
   //input text will replace tweet text
   function loadInput (pos){
-    //get array of keys of parts of speach
-    let keys = Object.keys(pos);
-    if(keys.length>0){
-      //show input fields based on POS
-      //look at each key and create a key for each
-      keys.forEach(key=>{
-        let part = pos[key];
-        part.forEach((obj, index, arr) => {
-          //capatalize first letter
-          let fieldName = key.charAt(0).toUpperCase()+key.slice(1);
-          let $input =
-          '<div class=\'input-field '+key+'\'>'+
-          		'<input type=\'text\' name='+key+''+index+' required class=\'qField '+key+' validate\'>'+
-          				'<label class=\'qLabel\' for=\''+key+''+index+'\'>'+
-          						fieldName+
-          				'</label>'+
-          		'</input>'+
-          '</div>';
-          $input = $($input);
-          $('.buttonBox').before($input);
-        });
-      });
+		//number of allowed fields
+		let fieldTot = 5;
+
+		let keys = Object.keys(pos);
+    if(keys.length>=1){
+			//get array of keys of parts of speach
+
+
+			//look at each key and create a key for each IF LESS THAN 5 POS
+			keys.forEach(key=>{
+				let part = pos[key];
+				console.log(key, part);
+				part.forEach((obj, index, arr) => {
+					//Sanitize/set field name
+					let fieldName = '';
+					if(key === 'handle'){
+						fieldName = 'Twitter Handle';
+					}else{
+						fieldName = key.charAt(0).toUpperCase()+key.slice(1);
+					}
+
+					let $input =
+					'<div class=\'input-field '+key+'\'>'+
+							'<input type=\'text\' name='+key+''+index+' class=\'qField '+key+'\'>'+
+									'<label class=\'qLabel\' for=\''+key+''+index+'\'>'+
+											fieldName+
+									'</label>'+
+							'</input>'+
+					'</div>';
+					$input = $($input);
+					$('.buttonBox').before($input);
+				});
+			});
 
 
     }else{
       //if no POS in tweet move on to the next tweet recursively
     }
   }
-
-
-
-  /*
-    Unused Code
-    else if(loading === true){
-      //NEED TO FIX
-      $('#libATweetTab').append(
-        "<h5 class='tweetNotFoundNotice'>'Tweets Loading'</h5>");
-
-        // $('#libATweetTab').append(
-        //   "<h5 class='tweetNotFoundNotice'>Latest Tweets</h5>");
-    }
-  */

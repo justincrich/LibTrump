@@ -35,3 +35,8 @@ body{
   justify-content: center;
   display: none;
 }
+
+.validationError{
+  background: $error-color;
+  font-size: 1.5em;
+}

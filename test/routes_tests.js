@@ -39,7 +39,6 @@ describe('ROUTES',function(){
       chai.request(app)
         .get('/tweet/'+num)
         .end(function(err,res){
-          console.log('length', res.body.length);
           expect(res.body.length).to.eql(1);
           done();
         });

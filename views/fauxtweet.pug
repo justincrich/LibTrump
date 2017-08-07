@@ -1,9 +1,8 @@
 extends layout
 block content
-  script(type='text/javascript') var tweet = !{JSON.stringify(swapsies)}
   script(type='text/javascript') var output = !{JSON.stringify(data)}
-  
-  div(class='tweetContainer')
+  -var tweet = txtHTML;
+  div(id='tweet' class='tweetContainer')
     div(class='tweetBody')
       div(class='profileOverview')
         img(class='img' src='/media/profileImg.jpg')
@@ -14,10 +13,12 @@ block content
               span(class='badges')
             span(class='handle') @fakeDonaldTrump
       div(class='tweetTextContainer')
-        p(class='text') 
+          div(class='text') !{tweet}
       div(class='details')
         div(class='dateTime')
   div(class='actionContainer')
+    //- .fb-share-button(data-href='https://developers.facebook.com/docs/plugins/', data-layout='button', data-size='large', data-mobile-iframe='true')
+    //-     a.fb-xfbml-parse-ignore(target='_blank', href='https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&src=sdkpreparse') Share
     a(class="btn waves-effect waves-light" href='/') Create New TweetLib
       i(class="material-icons left") add
   

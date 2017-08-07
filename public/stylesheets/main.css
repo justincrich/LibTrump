@@ -32,6 +32,10 @@ body {
   justify-content: center;
   display: none; }
 
+.validationError {
+  background: rgba(244, 67, 54, 0.9);
+  font-size: 1.5em; }
+
 /*--------------COLORS-------------------*/
 /*-------------MEDIA QUERY SIZES------------*/
 /*--------------COLORS-------------------*/
@@ -74,6 +78,10 @@ body {
     .questionContainer .buttonBox .submitButton {
       font-weight: normal;
       background: #5384a7; }
+    .questionContainer .buttonBox #formMoreTweetsBtn {
+      font-weight: normal;
+      background: #77ba1a;
+      margin-right: 15px; }
 
 /* ------------------FONTS------------------- */
 .header {
