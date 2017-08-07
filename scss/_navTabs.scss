@@ -1,0 +1,26 @@
+@import 'colors';
+@import 'mixins';
+
+.navTabsBody{
+
+
+  ul{
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    li{
+      a{
+        color: $accent-color !important;
+      }
+      .indicator{
+        color: $accent-color !important;
+      }
+
+    }
+  }
+  .tabs .indicator{
+    background-color: $accent-color !important;
+  }
+}

@@ -1,0 +1,68 @@
+@import 'colors';
+@import 'mixins';
+
+#moreTweetsModalIndex{
+  overflow: hidden;
+  height: 500px!important;
+  position: fixed!important;
+
+  .modal-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid $divider-color;
+    z-index: 1000;
+    height: 60px;
+
+    h5{
+
+      color:$text-color-dark;
+      margin: 15px 0;
+    }
+  }
+  p{
+    color:$text-color-dark;
+  }
+  a{
+    color:$accent-color;
+  }
+  .modal-content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    overflow: scroll;
+    padding: 0 24px;
+
+      .tweetContainer{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        z-index: -1;
+
+        .tweetBody{
+          width:100%;
+          cursor: pointer;
+
+          .nameContainer:hover, a:hover{
+            color:$tweet-text;
+            text-decoration: none !important;
+          }
+        }
+
+      }
+
+  }
+
+  .modal-footer{
+    border-top: 1px solid $divider-color;
+    z-index: 10;
+    height: 60px !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 0;
+  }
+}
