@@ -2,6 +2,7 @@
 @import 'mixins';
 
 .questionContainer{
+  margin-top:10px;
   width:60%;
   @include mq('tablet'){
     width:40%;
