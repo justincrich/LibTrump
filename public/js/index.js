@@ -27,10 +27,25 @@ const tweetCard=
 				'</div>'+
 		'</div>'+
 '</div>';
+
+const spinner =
+'<div id="tweetCardLoadSpinner">'+
+	'<div class="preloader-wrapper small active">'+
+					'<div class="spinner-layer spinner-green-only">'+
+							'<div class="circle-clipper left">'+
+									'<div class="circle"></div>'+
+							'</div><div class="gap-patch">'+
+									'<div class="circle"></div>'+
+							'</div><div class="circle-clipper right">'+
+									'<div class="circle"></div>'+
+							'</div>'+
+					'</div>'+
+			'</div>'+
+'</div>';
 //load the tweets into the store
 //start loading processer
 $('#formIndicator').show();
-fetch("/tweet/5")
+fetch("/tweet/10")
   .then(res=> {
     return res.json();
   })
@@ -38,12 +53,15 @@ fetch("/tweet/5")
     loading = false;
     tweetStore = json;
     console.log('tweets',tweetStore);
-    selectedTweet = tweetStore.shift();
+    //selectedTweet = tweetStore.shift();
+		selectedTweet = tweetStore[0];
 		$('#formIndicator').hide();
     loadInput(selectedTweet.pos, selectedTweet.totPOSCount);
   });
 
   $( document ).ready(function() {
+
+		/*--------------MODAL FUNCTIONALITY-----------------*/
 			$('.modal').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
       complete: function() {
@@ -53,11 +71,7 @@ fetch("/tweet/5")
 
 			//handle pick a tweet activity
 			$('#formMoreTweetsBtn').on('click',()=>{
-				if(selectedTweet){
-					//place tweet being held back in store
-					tweetStore.unshift(selectedTweet);
-					selectedTweet = undefined;
-				}
+
 
 				if(tweetStore.length<0 && loading === false){
 					//what happens if there are no tweets received
@@ -65,18 +79,7 @@ fetch("/tweet/5")
 						"<h5 class='tweetNotFoundNotice'>'Error, No Tweets Found, Come Back Later'</h5>");
 				}else{
 					//Otherwise show tweets
-					tweetStore.forEach((tweet,index,arr)=>{
-						let card = createTweetCard(tweet.text,index);
-						card.click((e)=>{
-							let id = $(e.target).closest(".tweetContainer").attr('id');
-							selectedTweet = tweetStore.splice(id,1)[0];
-							$('#libATweetTab').contents(':not(.buttonBox)').remove();
-							loadInput(selectedTweet.pos,selectedTweet.totPOSCount);
-							$('#moreTweetsModalIndex').modal('close');
-						});
-						$('#moreTweetsModalIndex .modal-content .modal-tweets').append(
-							card);
-					});
+					showTweetList(tweetStore);
 				}
 			});
 
@@ -107,12 +110,63 @@ fetch("/tweet/5")
 			});
 
 
+			//Load more tweet when user scrolls to bottom of tweet div
+			$('.modal-tweets').on('scroll',(e)=>{
+				let elem = $(e.currentTarget);
+		    if (elem[0].scrollHeight - elem.scrollTop() == elem.outerHeight() && loading==false) {
+						loading = true;
+						let $spinner = $(spinner);
+						$('.modal-tweets').append($spinner);
+						let allCards = document.getElementsByClassName('tweetContainer');
+						let lastID = allCards[allCards.length-1].id;
+						console.log(lastID);
+						fetch("/tweet/10/"+lastID)
+						  .then(res=> {
+						    return res.json();
+						  })
+						  .then(json=>{
+						    loading = false;
+								console.log(json);
+						    //tweetStore = tweetStore.concat(json);
+								//get rid of dup tweet
+								json.shift();
+								showTweetList(json);
+
+						  });
+		    }
+			});
+
+			//Close modal when little X is clicked
+			$('#moreTweetsModalIndex')
+			.on('click',(e)=>{
+				$('#moreTweetsModalIndex').modal('close');
+			});
+
   });
 
-  function createTweetCard (tweetTxt, index = 0){
+	function showTweetList(tweetsArr){
+		tweetsArr.forEach((tweet,index,arr)=>{
+			let card = createTweetCard(tweet);
+			card.click((e)=>{
+				let id = $(e.target).closest(".tweetContainer").attr('id');
+				//selectedTweet = tweetStore.splice(id,1)[0];
+				selectedTweet = tweet;
+				$('#libATweetTab').contents(':not(.buttonBox)').remove();
+				loadInput(selectedTweet.pos,selectedTweet.totPOSCount);
+				$('#moreTweetsModalIndex').modal('close');
+			});
+			$('#moreTweetsModalIndex .modal-content .modal-tweets').append(
+				card);
+			loading = false;
+			$('#tweetCardLoadSpinner').remove();
+		});
+	}
+
+  function createTweetCard (tweet){
     let $div = $(tweetCard);
-    $($div).attr('id',index);
-    $($div).find('.tweetTextContainer .text').append(tweetTxt);
+    $($div).attr('id',tweet.id);
+		//$($div).attr('class','tweetBodyCard');
+    $($div).find('.tweetTextContainer .text').append(tweet.text);
     return $div;
   }
 

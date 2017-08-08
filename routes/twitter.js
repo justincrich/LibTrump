@@ -15,8 +15,9 @@ router.get('/', function(req, res, next) {
   res.render('index',{page:'index'});
 });
 
-router.get('/tweet/:totTweets', function(req, res, next) {
-  tweets.load('realDonaldTrump',req.params.totTweets).then((output)=>{
+//route that gets a certain number of tweets and optionally you can specify the max id to get older tweets
+router.get('/tweet/:totTweets/:maxId*?', function(req, res, next) {
+  tweets.load('realDonaldTrump',req.params.totTweets,req.params.maxId).then((output)=>{
 
     res.send(output);
   });

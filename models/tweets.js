@@ -19,12 +19,12 @@ var tweetProcessor = function (){
   let tweets = [];
   return {
     //load all requests
-      load: (handle,num)=>{
+      load: (handle,num,max_id)=>{
           return new Promise((resolve,reject)=>{
             //object that stores all tweets to return
             let keeper = [];
             try{
-              twitterRequest(handle,num).then(arr=>{
+              twitterRequest(handle,num,max_id).then(arr=>{
                 for(let i = 0;i<arr.length; i++){
                   //process parts of speach (noun, person, etc)
                   partsOfSpeech(arr[i].text).then((resArr)=>{
@@ -63,6 +63,7 @@ var tweetProcessor = function (){
                     arr[i].totPOSCount = totPOS;
                     let keys = Object.keys(arr[i].pos);
                     console.log(keys);
+                    //old code to keep tweets w/o pos from results ... removed because I need to query multiple results
                     if(keys.length>0){
                       keeper.push(arr[i]);
                     }
@@ -90,11 +91,15 @@ var tweetProcessor = function (){
 
 
 
-function twitterRequest(handle,num){
+function twitterRequest(handle,num,max_id){
 
   return new Promise((resolve,reject)=>{
+    let options = { screen_name: handle, count: num};
+    if(max_id){
+      options['max_id'] = max_id;
+    }
     twitter.getUserTimeline(
-      { screen_name: handle, count: num},
+      options,
       (err,res,body)=>{
         reject(err);
       },(body)=>{

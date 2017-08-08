@@ -2,23 +2,33 @@
 @import 'mixins';
 
 #moreTweetsModalIndex{
-  overflow: hidden;
-  height: 500px!important;
-  position: fixed!important;
-
+  height: 400px;
+  overflow-y: hidden!important;
   .modal-header{
     display: flex;
+
+    top:0;
     flex-direction: row;
-    justify-content: center;
+    //justify-content: center;
     align-items: center;
     border-bottom: 1px solid $divider-color;
     z-index: 1000;
     height: 60px;
+    width: 100%;
+    padding: 0 15px;
 
     h5{
 
       color:$text-color-dark;
       margin: 15px 0;
+    }
+    i{
+      color:$text-color-dark;
+      margin-left:auto;
+      cursor: pointer;
+      // position: absolute;
+      // right:0;
+      // margin-right:20px;
     }
   }
   p{
@@ -29,13 +39,16 @@
   }
   .modal-content{
     display: flex;
+    height: 340px;
     align-items: center;
     flex-direction: column;
-    overflow: scroll;
-    padding: 0 24px;
-    height: 380px;
+    overflow-y: hidden!important;
+    padding: 0 30px;
+
+
     .modal-tweets{
-      height: 100%;
+      overflow-y: scroll;
+      margin-bottom: 10px;
 
       .tweetContainer{
         display: flex;
@@ -55,18 +68,23 @@
         }
 
       }
+      #tweetCardLoadSpinner{
+        width:100%;
+        display: flex;
+        justify-content: center;
+      }
     }
 
   }
 
-  .modal-footer{
-    border-top: 1px solid $divider-color;
-    z-index: 10;
-    height: 60px !important;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    position: absolute;
-    bottom: 0;
-  }
+  // .modal-footer{
+  //   border-top: 1px solid $divider-color;
+  //   z-index: 10;
+  //   height: 60px !important;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: flex-end;
+  //   position: absolute;
+  //   bottom: 0;
+  // }
 }
