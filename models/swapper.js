@@ -41,13 +41,16 @@ function swapsies(tweet,params){
           let end = output.slice(ind);
 
           let specialChar = '';
+          let space = ' ';//to handle putting a space after the swapped word because for non hashtag/handle words there's no space
           if(key==='hashtag'){
             specialChar = '#';
+            space = '';
           }else if(key==='handle'){
             specialChar = '@';
+            space = '';
           }
-          output = beg + ' <div class="pos tooltipped"'+
-          'data-position="top" data-delay="50" data-tooltip="Original: '+specialChar+family[index].text+'">'+
+          output = beg +space+ '<div class="pos tooltipped"'+
+          'data-position="top" data-delay="50" data-tooltip="Original:'+specialChar+family[index].text.trim()+'">'+
           specialChar+val+'</div>';
           output += end.slice(wordLength);
 
