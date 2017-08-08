@@ -50,7 +50,7 @@ function swapsies(tweet,params){
             space = '';
           }
           output = beg +space+ '<div class="pos tooltipped"'+
-          'data-position="top" data-delay="50" data-tooltip="Original:'+specialChar+family[index].text.trim()+'">'+
+          'data-position="top" data-delay="50" data-tooltip="Original: '+specialChar+family[index].text.trim()+'">'+
           specialChar+val+'</div>';
           output += end.slice(wordLength);
 
