@@ -45,19 +45,20 @@
   }
   .buttonBox{
     display: flex;
-    justify-content: flex-end;
-    flex-direction: row;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
     .submitButton{
       font-weight: normal;
       background:$filed-color-active;
-      width: 50%;
+
 
     }
     #formMoreTweetsBtn{
       font-weight: normal;
-      background:$filed-color-passive;
-      margin-right: 15px;
-      width: 50%;
+      background:$tweet-accent;
+      margin-bottom: 20px;
+
     }
   }
 }

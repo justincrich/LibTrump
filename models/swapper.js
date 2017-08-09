@@ -26,11 +26,15 @@ function swapsies(tweet,params){
             index: output.indexOf(family[index].text),
             type:key
           });
-          //output = output.replace(new RegExp(family[index].text.trim(),'i'),val);
+
           //word to replace
-          let replace = family[index].text;
+          let replace = family[index].text.trim();
+          var puncEnd = !!replace.match(/[.,:!?]$/);//checks if the word to be replaced has a puncuation at the end
+          if(puncEnd){
+            replace = replace.slice(0,-1);
+          }
           //index of word
-          let ind = output.indexOf(family[index].text);
+          let ind = output.indexOf(family[index].text.trim());
           let wordLength = replace.length;
           //change start index and word length if it has a hashtag or handle
           if(key==='hashtag' || key==='handle'){
@@ -39,19 +43,18 @@ function swapsies(tweet,params){
           }
           let beg = output.slice(0,ind);
           let end = output.slice(ind);
+          console.log(beg);
+          console.log(end);
 
           let specialChar = '';
-          let space = ' ';//to handle putting a space after the swapped word because for non hashtag/handle words there's no space
           if(key==='hashtag'){
             specialChar = '#';
-            space = '';
           }else if(key==='handle'){
             specialChar = '@';
-            space = '';
           }
-          output = beg +space+ '<div class="pos tooltipped"'+
+          output = beg + '<div class="pos tooltipped"'+
           'data-position="top" data-delay="50" data-tooltip="Original: '+specialChar+family[index].text.trim()+'">'+
-          specialChar+val+'</div> ';
+          specialChar+val+'</div>';
           output += end.slice(wordLength);
 
           // output = output.replace(

@@ -59,13 +59,13 @@ body {
       padding-bottom: 5px;
       z-index: 100; }
       .questionContainer .input-field input:focus {
-        border-bottom: 2px solid #5384a7 !important;
-        box-shadow: 0px 0px 0px #5384a7 !important; }
+        border-bottom: 2px solid #EEA447 !important;
+        box-shadow: 0px 0px 0px #EEA447 !important; }
         .questionContainer .input-field input:focus + label {
-          color: #5384a7 !important;
+          color: #EEA447 !important;
           font-size: 1rem; }
           .questionContainer .input-field input:focus + label + div {
-            color: #5384a7 !important; }
+            color: #EEA447 !important; }
     .questionContainer .input-field .helper {
       font-size: .85rem;
       font-weight: 500; }
@@ -75,17 +75,16 @@ body {
     z-index: -10; }
   .questionContainer .buttonBox {
     display: flex;
-    justify-content: flex-end;
-    flex-direction: row; }
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%; }
     .questionContainer .buttonBox .submitButton {
       font-weight: normal;
-      background: #5384a7;
-      width: 50%; }
+      background: #EEA447; }
     .questionContainer .buttonBox #formMoreTweetsBtn {
       font-weight: normal;
-      background: #EEA447;
-      margin-right: 15px;
-      width: 50%; }
+      background: #1B95E0;
+      margin-bottom: 20px; }
 
 /* ------------------FONTS------------------- */
 .header {
