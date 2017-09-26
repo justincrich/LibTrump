@@ -42,8 +42,7 @@ body {
 /*--------------Dependencies----------------*/
 /*-------------MEDIA QUERY SIZES------------*/
 #guide {
-  font-size: .9em;
-  font-weight: 400; }
+  font-size: .9em; }
 
 .questionContainer {
   margin-top: 10px;
